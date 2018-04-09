@@ -1,9 +1,8 @@
 import os
-from flask import Flask, request, redirect, url_for
+from flask import Flask, request, redirect
 from werkzeug.utils import secure_filename
 
-from keras.models import Sequential, load_model
-import keras, sys
+from keras.models import load_model
 import numpy as np
 from PIL import Image
 
@@ -51,7 +50,6 @@ def upload_file():
 
             return "Animal: " + classes[predicted] + ", Probability: " + str(percentage) + "%"
 
-            # return redirect(url_for("uploaded_file", filename=filename))
     return '''
     <!doctype html>
     <html>
