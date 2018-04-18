@@ -12,18 +12,20 @@ savedir = "./" + animalname
 flickr = FlickrAPI(key, secret, format="parsed-json")
 result = flickr.photos.search(
     text = animalname,
-    per_page = 400,
+    per_page = 10,
     media = "photos",
     sort = "relevance",
     safe_search = 1,
-    extras = "url_q, licence"
+    extras = "url_l, licence"
 )
+# URL of large square 150x150 size image
+# extras = "url_q, licence"
 
 photos = result["photos"]
 # pprint(photos)
 
 for i, photo in enumerate(photos["photo"]):
-    url_q = photo["url_q"]
+    url_q = photo["url_l"]
     filepath = savedir + "/" + photo["id"] + ".jpg"
     if os.path.exists(filepath):
         continue
